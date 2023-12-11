@@ -19,5 +19,35 @@ public class MappingProfiles : Profile
         CreateMap<User,UserAllDto>()
             .ForMember(dest=>dest.Roles, origen=> origen.MapFrom(origen=> origen.Roles))
             .ReverseMap();
+
+        CreateMap<Addressperson, AddresspersonDto>()
+            .ReverseMap();
+        CreateMap<Categoryperson, CategorypersonDto>()
+            .ReverseMap();
+        CreateMap<City, City>()
+            .ReverseMap();
+        CreateMap<Contactperson, ContactpersonDto>()
+            .ReverseMap();
+        CreateMap<Contract, ContractDto>()
+            .ReverseMap();
+        CreateMap<Country, CountryDto>()
+            .ReverseMap();
+        CreateMap<Person, PersonDto>()
+            .ReverseMap();
+        CreateMap<Programming, ProgrammingDto>()
+            .ReverseMap();
+        CreateMap<Region, RegionDto>()
+            .ReverseMap();
+        CreateMap<Shift, ShiftDto>()
+            .ReverseMap();
+        CreateMap<Status, StatusDto>()
+            .ReverseMap();
+        CreateMap<Typeaddress, TypeaddressDto>()
+            .ReverseMap();
+        CreateMap<Typecontact, TypecontactDto>()
+            .ReverseMap();
+        CreateMap<Typeperson, TypepersonDto>()
+            .ReverseMap();
+
     }
 }
