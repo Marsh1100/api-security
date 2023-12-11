@@ -81,8 +81,8 @@ public class SecurityContextSeed
                         {
                             entidad.Add(new UserRol
                             {
-                                UserId= item.UserId,
-                                RolId = item.RolId
+                                IdUser= item.IdUser,
+                                IdRol = item.IdRol
                             });
                         }
                         context.UserRoles.AddRange(entidad);

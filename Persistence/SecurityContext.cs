@@ -33,7 +33,7 @@ public class SecurityContext : DbContext
 
     public virtual DbSet<Region> Regions { get; set; }
 
-    public virtual DbSet<Rol> Rols { get; set; }
+    public virtual DbSet<Rol> Roles { get; set; }
 
     public virtual DbSet<Shift> Shifts { get; set; }
 
@@ -46,6 +46,8 @@ public class SecurityContext : DbContext
     public virtual DbSet<Typeperson> Typepeople { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<UserRol> UserRoles { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
