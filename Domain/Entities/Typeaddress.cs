@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Persistence.Entities;
+namespace Domain.Entities;
 
-public partial class Typeaddress
+public partial class Typeaddress : BaseEntity
 {
-    public int Id { get; set; }
 
     public string Description { get; set; }
 

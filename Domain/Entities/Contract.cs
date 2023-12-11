@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Persistence.Entities;
+namespace Domain.Entities;
 
-public partial class Contract
+public partial class Contract : BaseEntity
 {
-    public int Id { get; set; }
-
     public int IdClient { get; set; }
 
     public int IdEmployee { get; set; }

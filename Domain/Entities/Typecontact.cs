@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Persistence.Entities;
+namespace Domain.Entities;
 
-public partial class Typecontact
+public partial class Typecontact : BaseEntity
 {
-    public int Id { get; set; }
-
     public string Description { get; set; }
 
     public virtual ICollection<Contactperson> Contactpeople { get; set; } = new List<Contactperson>();

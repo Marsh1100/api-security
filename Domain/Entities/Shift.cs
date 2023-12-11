@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Persistence.Entities;
+namespace Domain.Entities;
 
-public partial class Shift
+public partial class Shift : BaseEntity
 {
-    public int Id { get; set; }
 
     public string Name { get; set; }
 

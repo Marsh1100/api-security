@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Persistence.Entities;
+namespace Domain.Entities;
 
-public partial class Programming
+public partial class Programming  : BaseEntity
 {
     public int IdContract { get; set; }
 
