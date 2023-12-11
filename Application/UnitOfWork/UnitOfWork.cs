@@ -10,11 +10,11 @@ namespace Application.UnitOfWork;
 
 public class UnitOfWork : IUnitOfWork, IDisposable
 {
-    private readonly ApiDbContext _context;
+    private readonly SecurityContext _context;
     private IRolRepository _roles;
     private IUserRepository _users;
   
-    public UnitOfWork(ApiDbContext context)
+    public UnitOfWork(SecurityContext context)
     {
         _context = context;
     }

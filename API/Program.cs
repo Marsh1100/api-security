@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<ApiDbContext>(optionBuilder =>
+builder.Services.AddDbContext<SecurityContext>(optionBuilder =>
 {
     string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
     optionBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
@@ -45,9 +45,9 @@ using (var scope = app.Services.CreateScope())
 	var loggerFactory = services.GetRequiredService<ILoggerFactory>();
 	try
 	{
-		var context = services.GetRequiredService<ApiDbContext>();
+		var context = services.GetRequiredService<SecurityContext>();
 		await context.Database.MigrateAsync();
-		await ApiDbContextSeed.SeedAsync(context,loggerFactory);
+		await SecurityContextSeed.SeedAsync(context,loggerFactory);
 
 	}
 	catch (Exception ex)

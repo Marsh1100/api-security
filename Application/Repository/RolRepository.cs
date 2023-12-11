@@ -6,9 +6,9 @@ namespace Application.Repository;
 
 public class RolRepository : GenericRepository<Rol>, IRolRepository
 {
-    private readonly ApiDbContext _context;
+    private readonly SecurityContext _context;
 
-    public RolRepository(ApiDbContext context) : base(context)
+    public RolRepository(SecurityContext context) : base(context)
     {
        _context = context;
     }
