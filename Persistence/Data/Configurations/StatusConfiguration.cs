@@ -22,5 +22,11 @@ public class StatusConfiguration : IEntityTypeConfiguration<Status>
                 .HasMaxLength(50)
                 .HasColumnName("description");
 
+        builder.HasData(
+                new Status{Id = 1, Description = "Activo"},
+                new Status{Id = 2, Description = "Finalizado"},
+                new Status{Id = 3, Description = "Pendiente"}
+            );
+
     }
 }

@@ -21,6 +21,12 @@ public class CategorypersonConfiguration : IEntityTypeConfiguration<Categorypers
                 .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnName("name");
+        builder.HasData(
+                new Categoryperson{Id = 1, Name = "Auxiliar"},
+                new Categoryperson{Id = 2, Name = "Cajero"},
+                new Categoryperson{Id = 3, Name = "Supervisor"},
+                new Categoryperson{Id = 4, Name = "Vigilante"}
+            );
 
     }
 }

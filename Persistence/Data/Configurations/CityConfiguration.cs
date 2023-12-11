@@ -28,6 +28,12 @@ public class CityConfiguration : IEntityTypeConfiguration<City>
             builder.HasOne(d => d.IdRegionNavigation).WithMany(p => p.Cities)
                 .HasForeignKey(d => d.IdRegion)
                 .HasConstraintName("city_ibfk_1");
+             builder.HasData(
+                new City{Id=1, Name  = "Bucaramanga", IdRegion = 1},
+                new City{Id=2, Name  = "Floridablanca", IdRegion = 1},
+                new City{Id=3, Name  = "Giron", IdRegion = 1},
+                new City{Id=4, Name  = "Piedecuesta", IdRegion = 1}
+            );
 
     }
 }

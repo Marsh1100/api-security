@@ -21,6 +21,9 @@ public class TypecontactConfiguration : IEntityTypeConfiguration<Typecontact>
                 .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnName("description");
-
+        builder.HasData(
+                new Typecontact{Id = 1, Description = "Celular"},
+                new Typecontact{Id = 2, Description = "Email"}
+            );
     }
 }

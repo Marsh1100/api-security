@@ -21,6 +21,10 @@ public class TypepersonConfiguration : IEntityTypeConfiguration<Typeperson>
                 .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnName("description");
+             builder.HasData(
+                new Typeperson{Id = 1, Description = "Empleado"},
+                new Typeperson{Id = 2, Description = "Cliente"}
+            );
 
     }
 }

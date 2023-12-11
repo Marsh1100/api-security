@@ -38,5 +38,9 @@ public class ProgrammingConfiguration : IEntityTypeConfiguration<Programming>
                 .HasForeignKey(d => d.IdShift)
                 .HasConstraintName("programming_ibfk_2");
 
+            builder.HasData(
+                new Programming{Id=1, IdContract  =1,  IdEmployee  =1, IdShift  =1}
+            );
+
     }
 }

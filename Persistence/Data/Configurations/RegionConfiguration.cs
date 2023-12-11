@@ -29,5 +29,8 @@ public class RegionConfiguration : IEntityTypeConfiguration<Region>
             builder.HasOne(d => d.IdCountryNavigation).WithMany(p => p.Regions)
                 .HasForeignKey(d => d.IdCountry)
                 .HasConstraintName("region_ibfk_1");
+            builder.HasData(
+                new Region{Id=1, Name  = "Santander", IdCountry=1}
+            );
     }
 }

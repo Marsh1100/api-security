@@ -27,6 +27,10 @@ public class ShiftConfiguration : IEntityTypeConfiguration<Shift>
                 .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnName("name");
-
+        builder.HasData(
+                new Shift {Id = 1, Name = "Mañana", HourEnd = 12, HourStart = 6},
+                new Shift {Id = 2, Name = "Tarde", HourEnd = 8, HourStart = 12},
+                new Shift {Id = 3, Name = "Noche", HourEnd = 12, HourStart = 8}
+            );
     }
 }
