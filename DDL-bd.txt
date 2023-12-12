@@ -32,7 +32,7 @@ CREATE TABLE categoryPerson (
 );
 CREATE TABLE person (
     id INT NOT NULL AUTO_INCREMENT,
-    personId VARCHAR NOT NULL, 
+    personId VARCHAR(50) NOT NULL, 
     name VARCHAR(50)  NOT NULL,
     dateRegister DATE NOT NULL,
     idTypePerson int NOT NULL,
@@ -42,12 +42,6 @@ CREATE TABLE person (
     FOREIGN KEY (idTypePerson) REFERENCES typePerson (id) ON DELETE CASCADE,
     FOREIGN KEY (idCategoryPerson) REFERENCES categoryPerson (id) ON DELETE CASCADE,
     FOREIGN KEY (idCity) REFERENCES city (id) ON DELETE CASCADE
-);
-
-CREATE TABLE typeContact (
-    id INT NOT NULL AUTO_INCREMENT,
-    description VARCHAR(50)  NOT NULL,
-    PRIMARY KEY (id)
 );
 
 CREATE TABLE typeContact (
@@ -82,15 +76,6 @@ CREATE TABLE addressPerson (
     FOREIGN KEY (idTypeAddress) REFERENCES typeAddress (id) ON DELETE CASCADE
 );
 
-CREATE TABLE addressPerson (
-    id INT NOT NULL AUTO_INCREMENT,
-    address VARCHAR(50)  NOT NULL,
-    idPerson int NOT NULL,
-    idTypeAddress int NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (idPerson) REFERENCES person (id) ON DELETE CASCADE,
-    FOREIGN KEY (idTypeAddress) REFERENCES typeAddress (id) ON DELETE CASCADE
-);
 CREATE TABLE status (
     id INT NOT NULL AUTO_INCREMENT,
     description VARCHAR(50)  NOT NULL,
