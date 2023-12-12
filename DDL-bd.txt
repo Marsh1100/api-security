@@ -1,0 +1,150 @@
+CREATE DATABASE security;
+USE security;
+
+CREATE TABLE country (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50)  NOT NULL,
+    PRIMARY KEY (id)
+);
+CREATE TABLE region (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50)  NOT NULL,
+    idCountry int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idCountry) REFERENCES country (id) ON DELETE CASCADE
+);
+CREATE TABLE city (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50)  NOT NULL,
+    idRegion int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idRegion) REFERENCES region (id) ON DELETE CASCADE
+);
+CREATE TABLE typePerson (
+    id INT NOT NULL AUTO_INCREMENT,
+    description VARCHAR(50)  NOT NULL,
+    PRIMARY KEY (id)
+);
+CREATE TABLE categoryPerson (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50)  NOT NULL,
+    PRIMARY KEY (id)
+);
+CREATE TABLE person (
+    id INT NOT NULL AUTO_INCREMENT,
+    personId VARCHAR NOT NULL, 
+    name VARCHAR(50)  NOT NULL,
+    dateRegister DATE NOT NULL,
+    idTypePerson int NOT NULL,
+    idCategoryPerson int,
+    idCity int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idTypePerson) REFERENCES typePerson (id) ON DELETE CASCADE,
+    FOREIGN KEY (idCategoryPerson) REFERENCES categoryPerson (id) ON DELETE CASCADE,
+    FOREIGN KEY (idCity) REFERENCES city (id) ON DELETE CASCADE
+);
+
+CREATE TABLE typeContact (
+    id INT NOT NULL AUTO_INCREMENT,
+    description VARCHAR(50)  NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE typeContact (
+    id INT NOT NULL AUTO_INCREMENT,
+    description VARCHAR(50)  NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE contactPerson (
+    id INT NOT NULL AUTO_INCREMENT,
+    description VARCHAR(50) NOT NULL,
+    idPerson int NOT NULL,
+    idTypeContact int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idPerson) REFERENCES person (id) ON DELETE CASCADE,
+    FOREIGN KEY (idTypeContact) REFERENCES typeContact (id) ON DELETE CASCADE
+);
+
+CREATE TABLE typeAddress (
+    id INT NOT NULL AUTO_INCREMENT,
+    description VARCHAR(50)  NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE addressPerson (
+    id INT NOT NULL AUTO_INCREMENT,
+    address VARCHAR(50)  NOT NULL,
+    idPerson int NOT NULL,
+    idTypeAddress int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idPerson) REFERENCES person (id) ON DELETE CASCADE,
+    FOREIGN KEY (idTypeAddress) REFERENCES typeAddress (id) ON DELETE CASCADE
+);
+
+CREATE TABLE addressPerson (
+    id INT NOT NULL AUTO_INCREMENT,
+    address VARCHAR(50)  NOT NULL,
+    idPerson int NOT NULL,
+    idTypeAddress int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idPerson) REFERENCES person (id) ON DELETE CASCADE,
+    FOREIGN KEY (idTypeAddress) REFERENCES typeAddress (id) ON DELETE CASCADE
+);
+CREATE TABLE status (
+    id INT NOT NULL AUTO_INCREMENT,
+    description VARCHAR(50)  NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE contract (
+    id INT NOT NULL AUTO_INCREMENT,
+    idClient int NOT NULL,
+    idEmployee int NOT NULL,
+    dateContract DATE NOT NULL,
+    dateEnd DATE NOT NULL,
+    idStatus int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (idClient) REFERENCES person (id) ON DELETE CASCADE,
+    FOREIGN KEY (idEmployee) REFERENCES person (id) ON DELETE CASCADE,
+    FOREIGN KEY (idStatus) REFERENCES status (id) ON DELETE CASCADE
+);
+CREATE TABLE shift (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50)  NOT NULL,
+    hourStart TIME NOT NULL,
+    hourEnd TIME NOT NULL,
+    PRIMARY KEY (id)
+);
+
+
+CREATE TABLE programming(
+    idContract int NOT NULL,
+    idShift int NOT NULL,
+    idEmployee int NOT NULL,
+    FOREIGN KEY (idContract) REFERENCES contract (id) ON DELETE CASCADE,
+    FOREIGN KEY (idShift) REFERENCES shift (id) ON DELETE CASCADE,
+    FOREIGN KEY (idEmployee) REFERENCES person (id) ON DELETE CASCADE	
+);
+
+
+CREATE TABLE rol (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50)  NOT NULL,
+    PRIMARY KEY (id)
+);
+CREATE TABLE user (
+    id int NOT NULL AUTO_INCREMENT,
+    idenNumber varchar(20)  NOT NULL,
+    username varchar(50) NOT NULL,
+    email varchar(100)  NOT NULL,
+    password varchar(255)  NOT NULL,
+    PRIMARY KEY (id)
+);
+CREATE TABLE userRol (
+    idUser int NOT NULL,
+    idRol int NOT NULL,	
+    PRIMARY KEY (idUser, idRol),
+    FOREIGN KEY (idRol) REFERENCES rol (id) ON DELETE CASCADE,
+    FOREIGN KEY (idUser) REFERENCES user (id) ON DELETE CASCADE
+);
