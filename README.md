@@ -30,7 +30,25 @@ public async Task<List<Person>> GetEmployeesVigilant()
 localhost:5000/api/Person/telefonosVigilates
 ```
 ```c#
+ public async Task<IEnumerable<object>> GetPhonesVigilant()
+    {
+        var people = await _context.People.ToListAsync();
+        var categorypeople = await _context.Categorypeople.ToListAsync();
+        var typePeople = await _context.Typepeople.ToListAsync();
+        var contactPeople = await _context.Contactpeople.ToListAsync();
+        var typeContacts = await _context.Typecontacts.ToListAsync();
 
+        return (from person in people 
+                join typePerson in typePeople on person.IdTypePerson equals typePerson.Id
+                join categoryperson in categorypeople on person.IdCategoryPerson equals categoryperson.Id
+                join contactPerson in contactPeople on person.Id equals contactPerson.IdPerson
+                join typecontact in typeContacts on contactPerson.IdTypeContact equals typecontact.Id
+                where typePerson.Description == "Empleado" && categoryperson.Name == "Vigilante" &&typecontact.Description == "Celular"
+                select new {
+                    Empleado =  person.Name,
+                    Numero = contactPerson.Description
+                }).ToList();
+    }
 ```
 4. Lista todos los clientes que vivan en la ciudad de Bucaramanga.
 ```
@@ -70,8 +88,26 @@ localhost:5000/api/Person/clientesAntiguos5
 ```
 7. Lista todos los contratos cuyo estado es activo. Se debe mostrar el nro de contrato el nombre del cliente y el empleado que registro el contrato.
 ```
-
+localhost:5000/api/Person/contratosActivos
 ```
 ```c#
+public async Task<IEnumerable<object>> GetActiveContracts()
+    {
+        var people = await _context.People.ToListAsync();
+        var contracts = await _context.Contracts.ToListAsync();
+        var statuses = await _context.Statuses.ToListAsync();
+        
 
+        return (from client in people 
+                join contract in contracts on client.Id equals contract.IdClient
+                join employee in people on contract.IdEmployee equals employee.Id
+                join status in statuses on contract.IdStatus equals status.Id
+                where status.Description == "Activo"
+                select new {
+                    nro_contrato = contract.Id,
+                    client = client.Name,
+                    employee = employee.Name
+                }).ToList();
+
+    }
 ```
