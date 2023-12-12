@@ -17,7 +17,6 @@ namespace API.Controllers;
 
 public class AddresspersonController : ApiBaseController
 {
-    private readonly IUserService _userService;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 

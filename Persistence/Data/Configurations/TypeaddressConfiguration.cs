@@ -23,11 +23,6 @@ public class TypeaddressConfiguration : IEntityTypeConfiguration<Typeaddress>
                 .HasMaxLength(50)
                 .HasColumnName("description");
             
-            builder.HasData(
-                new Typeaddress{Id = 1, Description = "Conjunto"},
-                new Typeaddress{Id = 2, Description = "Casa"},
-                new Typeaddress{Id = 2, Description = "Torre"}
-
-            );
+         
     }
 }

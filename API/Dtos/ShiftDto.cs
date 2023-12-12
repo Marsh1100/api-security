@@ -8,7 +8,7 @@ public class ShiftDto
   
     public string Name { get; set; }
 
-    public TimeOnly HourStart { get; set; }
+    public int HourStart { get; set; }
 
-    public TimeOnly HourEnd { get; set; }
+    public int HourEnd { get; set; }
 }

@@ -11,5 +11,4 @@ public class ContactpersonDto
 
     public int IdTypeContact { get; set; }
   
-    
 }

@@ -18,10 +18,8 @@ public class ShiftConfiguration : IEntityTypeConfiguration<Shift>
 
             builder.Property(e => e.Id).HasColumnName("id");
             builder.Property(e => e.HourEnd)
-                .HasColumnType("time")
                 .HasColumnName("hourEnd");
             builder.Property(e => e.HourStart)
-                .HasColumnType("time")
                 .HasColumnName("hourStart");
             builder.Property(e => e.Name)
                 .IsRequired()

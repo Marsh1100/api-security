@@ -36,8 +36,6 @@ public class AddresspersonConfiguration : IEntityTypeConfiguration<Addressperson
                 .HasForeignKey(d => d.IdTypeAddress)
                 .HasConstraintName("addressperson_ibfk_2");
 
-            builder.HasData(
-                new Addressperson{Id=1, Address="Calle 105",IdPerson  =1,  IdTypeAddress  =1}
-            );
+           
     }
 }
